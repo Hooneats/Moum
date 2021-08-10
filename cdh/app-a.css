@@ -1,0 +1,60 @@
+html,body {
+  overflow: hidden;
+     height: 100vh;
+ }
+ #navbar{
+     width: 100%;
+     height: 70px;
+     position: fixed;
+     top: 0;
+     z-index: 3;
+     transition: all 1s ease;
+ 
+ }
+ #main {
+     overflow: scroll;
+   width: 100%;
+   height: calc(100vh - 70px);
+   background-color: green;
+   top: 70px;
+   position: relative;
+   scroll-behavior: smooth;
+   scroll-snap-type: y mandatory;
+   scrollbar-width: none;
+   
+ }
+ #main > * {
+   width: 100vw;
+   height: calc(100vh - 70px);
+   scroll-snap-align: start;
+ }
+ .second-section{
+     background-color: red;
+ }
+ .third-section{
+     background-color: aquamarine;
+     display: flex;
+     flex-direction: column;
+ }
+ #main>::-webkit-scrollbar{
+     display: none;
+ }
+ .third-section>.third-section-main{
+   width: 100%;
+   height: calc(100vh - 90px);
+   background-color: greenyellow;
+   align-items: center;
+   justify-content: center;
+   position: inherit;
+ }
+ .third-section>.footer {
+   width: 100%;
+   height: 90px;
+   background-color: burlywood;
+   align-items: center;
+   text-align: center;
+   justify-content: center;
+   position: inherit;
+   
+ }
+ 
