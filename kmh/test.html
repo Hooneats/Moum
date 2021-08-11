@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</head>
+<body>
+
+<div id="#app">
+<div>
+  {{items}}
+</div>
+</div>
+
+
+<script>
+
+  new Vue ({
+    el:'#app',
+    data(){
+      return{
+        items: []
+      }
+    },
+
+    methods: {
+      async fetch() {
+        let items = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=160f05c35f34aef167fabe796efb2a8e&query=boss&page=1`);
+
+        this.items = items.results
+      }
+    },
+
+    mounted() {
+      this.fetch()
+    }
+  })
+</script>
+</body>
+</html>
