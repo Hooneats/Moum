@@ -34,6 +34,9 @@
     position: relative;
 
 }
+.swiper-container .swiper-wrapper .swiper-slide .slideDiv{
+
+}
 .swiper-container .swiper-wrapper .swiper-slide .swiper-slide-img {
     width: 230px;
     height: 130px;
@@ -79,14 +82,7 @@
         margin: 70px;
     }
 }
-@media screen and (min-width: 1700px){
-    #container-top {
-        display: none;
-    }
-    .container {
-        margin: 70px;
-    }
-}
+
 
 .container {
 

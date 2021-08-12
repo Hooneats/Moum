@@ -75,13 +75,13 @@ body {
 .first-section > .section-content {
   height: 50%;
   width: 100%;
-  
-  
+
+
   display: flex;
   flex-direction: column;
 }
 .first-section>.section-content>.button-container{
-  
+
   height: 50%;
   width: 100%;
 
