@@ -1,13 +1,15 @@
 #search-box {
     display: flex;
-    margin: 1rem 10rem;
+    margin: 1rem 5rem;
     border: 1px solid rgba(0,0,0,.6);
     border-radius: 50em;
     background-color: lightgray;
 
 }
 #search-box:focus-within {
-    background-color: darkgray;
+    background-color: #e3e3e3;
+    border-color: #a2bbff;
+    border-width: 5px;
 }
 #search-box #search-icon {
     height: 24px;
@@ -21,6 +23,45 @@
 #search-box #search-input:focus {
     outline: none;
 }
+
+#swiper-container {
+}
+.swiper-container .swiper-wrapper {
+
+}
+
+.swiper-container .swiper-wrapper .swiper-slide {
+    display: inline-block;
+    position: relative;
+
+}
+.swiper-container .swiper-wrapper .swiper-slide .swiper-slide-img {
+    width: 230px;
+    height: 150px;
+    border-radius: 20px;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0,0,0,.2);
+
+}
+.swiper-slide-text {
+    position: absolute;
+    z-index: 1;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.5);
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    font-size: 10px;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+
+}
+@media screen and (max-width: 1250px){
+    .slider-parent {
+        display: none;
+    }
+}
+
 .container {
     width: 100%;
 }
@@ -35,10 +76,13 @@
     position: relative;
     margin: 1%;
     width: 10rem;
+
 }
 .columns figure img {
     width: 100%;
     border-radius: 5%;
+    background: transparent;
+    border: 0.5px solid rgba(0,0,0,.1);
 }
 figure:hover {
     opacity: .4;
@@ -46,22 +90,30 @@ figure:hover {
 }
 .img-hover-text {
     display: none;
+
 }
+
 figure:hover .img-hover-text {
     display: block;
     background-color: rgba(0,0,0,.4);
+    font-size: 15px;
     position: absolute;
     border-radius: 5%;
     text-align: center;
-    padding-top: 50%;
+    vertical-align: middle;
+    font-weight: bold;
     height: 100%;
     width: 100%;
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    padding-top: 20%;
     margin: auto;
-    font-size: 20px;
-    color: #fff;
+    color: white;
     z-index: 1;
+
+}
+#no-data-box {
+ margin-left: 50px;
+}
+.no-data-text {
+    margin-left: 10px;
 }
