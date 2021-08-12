@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ProductList</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!--css-->
+    <link rel="stylesheet" href="./productList-a.css">
     <link rel="stylesheet" href="./productList.css">
 
     <!--vutify-->
@@ -36,10 +38,12 @@
 <div id="nav-placeholder" >
 
 </div>
+<div id="container-top"></div>
 
 
 
 <div class="container">
+
     <div class="mb-3" id="search-box">
         <div class="material-icons" id="search-icon">search</div>
         <input type="text" id="search-input" @keydown.enter="resetData" :value="searchVal">
@@ -50,24 +54,24 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/1.jpg" class="swiper-slide-img"><div class="swiper-slide-text">패션의류/잡화</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/2.jpg" class="swiper-slide-img"><div class="swiper-slide-text">뷰티</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/3.jpg" class="swiper-slide-img"><div class="swiper-slide-text">출산/유아동</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/4.jpg" class="swiper-slide-img"><div class="swiper-slide-text">식품</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/5.jpg" class="swiper-slide-img"><div class="swiper-slide-text">주방용품</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/6.jpg" class="swiper-slide-img"><div class="swiper-slide-text">홈인테리어</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/7.jpg" class="swiper-slide-img"><div class="swiper-slide-text">가전디지털</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/8.jpg" class="swiper-slide-img"><div class="swiper-slide-text">스포츠/레저</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/9.jpg" class="swiper-slide-img"><div class="swiper-slide-text">자동차용품</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/10.jpg" class="swiper-slide-img"><div class="swiper-slide-text">도서/음반/DVD</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/11.jpg" class="swiper-slide-img"><div class="swiper-slide-text">완구/취미</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/12.jpg" class="swiper-slide-img"><div class="swiper-slide-text">문구/오피스</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/13.jpg" class="swiper-slide-img"><div class="swiper-slide-text">반려동물용품</div></img></a></div>
-                <div class="swiper-slide"><a href="#" style="text-decoration: none"><img src="./img/14.jpg" class="swiper-slide-img"><div class="swiper-slide-text">헬스/건강식품</div></img></a></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('패션의류/잡화')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/1.jpg" class="swiper-slide-img"><div class="swiper-slide-text">패션의류/잡화</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('뷰티')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/2.jpg" class="swiper-slide-img"><div class="swiper-slide-text">뷰티</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('출산/유아동')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/3.jpg" class="swiper-slide-img"><div class="swiper-slide-text">출산/유아동</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('식품')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/4.jpg" class="swiper-slide-img"><div class="swiper-slide-text">식품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('주방용품')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/5.jpg" class="swiper-slide-img"><div class="swiper-slide-text">주방용품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('홈인테리어')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/6.jpg" class="swiper-slide-img"><div class="swiper-slide-text">홈인테리어</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('가전디지털')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/7.jpg" class="swiper-slide-img"><div class="swiper-slide-text">가전디지털</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('스포츠/레저')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/8.jpg" class="swiper-slide-img"><div class="swiper-slide-text">스포츠/레저</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('자동차용품')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/9.jpg" class="swiper-slide-img"><div class="swiper-slide-text">자동차용품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('도서/음반/DVD')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/10.jpg" class="swiper-slide-img"><div class="swiper-slide-text">도서/음반/DVD</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('완구/취미')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/11.jpg" class="swiper-slide-img"><div class="swiper-slide-text">완구/취미</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('문구/오피스')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/12.jpg" class="swiper-slide-img"><div class="swiper-slide-text">문구/오피스</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('반려동물용품')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/13.jpg" class="swiper-slide-img"><div class="swiper-slide-text">반려동물용품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click="categoryFetch('헬스/건강식품')" href="#" style="text-decoration: none; cursor: pointer"><img src="./img/14.jpg" class="swiper-slide-img"><div class="swiper-slide-text">헬스/건강식품</div></img></div></div>
 
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
+<!--            &lt;!&ndash; If we need pagination &ndash;&gt;-->
+<!--            <div class="swiper-pagination"></div>-->
 
             <!-- If we need navigation buttons -->
             <div class="swiper-button-prev"></div>
@@ -76,44 +80,52 @@
         </div>
 
     </div>
-    <div class="columns">
-        <div v-if="!items.length" >
+    <div class="columns" style="justify-content: center; margin-top: 50px">
+        <div v-if="!items.length" style="display: flex">
             <div class="d-flex justify-content-center" id="no-data-box">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                <h4 class="no-data-text">데이터가 없습니다.</h4>
             </div>
+            <input type="text" v-model:value="categoryName" @keydown.enter="fetch()" style="margin-left: 50px; width: 150px">
+            <button @click="fetch()" type="button" class="btn btn-outline-secondary">Refresh</button>
         </div>
         <figure v-else-if="items.length && !searchVal" v-for="(item, index) in items" :key="index">
-            <a :href="item.href" target="_blank">
+            <a :href="item.href" target="_blank" style="text-decoration: none;">
 
                 <img :src="item.imgUrl" onerror="this.src=`http://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/08/13/P3gT022T9nc5636697740033718734.jpg`">
-                <p class="img-hover-text"> {{ item.title }} <br/> {{item.price}}</p>
+                <p class="img-hover-text"> {{ item.title }}</p>
+                <figcaption class="figCaption-text">
+                    {{item.price}}
+                </figcaption>
             </a>
         </figure>
         <figure v-else-if="items.length && searchVal" v-for="(item, index) in items" :key="index">
-    <div>
-            <a :href="item.href" target="_blank">
+            <div>
+                <a :href="item.href" target="_blank" style="text-decoration: none;">
 
-                <img :src="item.imgUrl" onerror="this.src=`http://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/08/13/P3gT022T9nc5636697740033718734.jpg`">
-                <p class="img-hover-text"> {{ item.title }} <br/> {{item.price}}</p>
-
-            </a>
-</div>
+                    <img :src="item.imgUrl" onerror="this.src=`http://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/08/13/P3gT022T9nc5636697740033718734.jpg`">
+                    <p class="img-hover-text"> {{ item.title }}</p>
+                    <figcaption class="figCaption-text">
+                        <p>{{item.price}}</p>
+                    </figcaption>
+                </a>
+            </div>
         </figure>
+
+        <div v-if="!isTheEnd && items.length" class="d-flex justify-content-center" style="display: block">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+
+
     </div>
     <div v-if="!searchVal && items.length" v-observe-visibility="handleScrolledToBottom"></div>
-<!--    <div v-else-if="searchVal && items.length" v-observe-visibility="searchHandleScrolledToBottom"></div>-->
+    <div v-else-if="searchVal && items.length" v-observe-visibility="searchHandleScrolledToBottom"></div>
 </div>
 
-
-
-
-
-<footer class="footer">
-    <h1>im footer</h1>
-</footer>
 
 
 
@@ -142,18 +154,27 @@
                 items: [],
                 searchVal: '',
                 page: 1,
-                categoryName: '뷰티'
+                categoryName: '홈인테리어',
+                isTheEnd: false
             }
         },
 
         methods: {
             async fetch() {
                 let items = await axios.get(`http://localhost:8080/test/product-list-category?categoryName=${this.categoryName}&page=${this.page}`);
-                if (items.data.jsoupTestVoList.length === 0) {
-                    return
+                if (items.data.theEnd != true) {
+                    if (items.data.jsoupTestVoList.length === 0) {
+                        console.log("Fetch does not complete,Therefore one more time trying");
+                        this.fetch();
+                        return;
+                    }
+                    // this.items = items.data.jsoupTestVoList
+                    this.items.push(...items.data.jsoupTestVoList);
+                    console.log("Fetch complete");
+                } else {
+                    this.isTheEnd = items.data.theEnd;
                 }
-                // this.items = items.data.jsoupTestVoList
-                this.items.push(...items.data.jsoupTestVoList)
+
             },
             handleScrolledToBottom(){
                 // if (isvisible){return}
@@ -162,7 +183,8 @@
                 this.fetch()
             },
             resetData(event){
-                this.searchVal = event.target.value.trim()
+                this.categoryName = '',
+                    this.searchVal = event.target.value.trim()
                 this.items = [];
                 this.page = 1
                 if (!this.searchVal) {
@@ -172,16 +194,31 @@
                 this.searchMethod()
             },
             async searchMethod() {
-                let items = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=160f05c35f34aef167fabe796efb2a8e&query=${this.searchVal}&page=${this.page}`)
-                if (items.data.results.length === 0) {
-                    return
+                let items = await axios.get(`http://localhost:8080/test/product-list-search?query=${this.searchVal}&page=${this.page}`)
+                if (items.data.theEnd != true) {
+                    if (items.data.jsoupTestVoList.length === 0) {
+                        console.log("SearchMethod does not complete,Therefore one more time trying");
+                        this.searchMethod()
+                        return;
+                    }
+                    this.items.push(...items.data.jsoupTestVoList);
+                    console.log("SearchMethod complete");
+                } else {
+                    this.isTheEnd = items.data.theEnd
                 }
-                this.items.push(...items.data.results)
+
             },
             searchHandleScrolledToBottom(){
 
                 this.page++
                 this.searchMethod()
+            },
+            categoryFetch(categoryName){
+                this.searchVal = '',
+                    this.items=[],
+                    this.page = 1,
+                    this.categoryName = categoryName,
+                    this.fetch()
             }
         },
         mounted() {
@@ -202,11 +239,11 @@
         slideBetween: 10,
         centerSlides: true,
 
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
+        // // If we need pagination
+        // pagination: {
+        //     el: '.swiper-pagination',
+        //     clickable: true
+        // },
 
         // Navigation arrows
         navigation: {
