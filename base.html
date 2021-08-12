@@ -1,19 +1,133 @@
 <body>
-    
-    <nav id="navbar" class="navbar navbar-light  bg-light" >
+
+    <nav id="navbar" class="navbar">
         <div class="container-fluid">
+
             <a href="#" class="navbar-brand">MOUM</a>
+
+
+            <ul id="navItem">
+                <li><a href="#" id="nav-login" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">LOGIN </a></li>
+                <li><a href="#" id="nav-signup" type="button" data-bs-toggle="modal" data-bs-target="#signupModal">SIGNUP</a>
+                </li>
+
+                
+                <li><a href="#" id="nav-wishlist" hidden="true">WISHLIST</a></li>
+                <li><a href="#" id="nav-statistic" hidden="true">STATISTIC</a></li>
+                <li><a href="#" id="nav-mypage" hidden="true">MYPAGE</a></li>
+                <li><a href="#" id="nav-logout" hidden="true">LOGOUT</a></li>
+                <li></li>
+
+            </ul>
         </div>
+        </div>
+
     </nav>
+    
+
     <footer id="footer">
-        <h1>im footer</h1>
-      </footer>
+        <div class="footer-logo">
+            <h2>MOUM</h2>
+            <p>© 2021 MOUM, some rights reserved</p>
+        </div>
+        <div class="footer-content">
+            <div class="social-icon">
+                <a href="https://github.com/Hooneats/Moum" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
+                <a href="https://trello.com/b/Hl7QZRr8/our-project" target="_blank"><i class="fab fa-trello fa-2x"></i></a>
+                <a href="https://www.youtube.com/channel/UCSMue_bq2dH1UEd9SFsyd6g" target="_blank"> <i class="fab fa-youtube-square fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <div id="modals">
+
+        <div id="loginModal" class="modal fade" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div id="loginModalContainer" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modalImageContainer">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                    <div class="modalFormContainer">
+                        <h2>Login</h2>
+                        <form action="#" id="loginForm" class="modal-form">
+                            <div>
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Password" required>
+                                <p>처음이십니까? <a href="#" id="">회원가입
+                                    </a></p>
+
+                            </div>
+
+
+                        </form>
+
+                        <div class="buttonGroup">
+
+                            <button onclick=""><span class="material-icons">
+                                    login
+                                </span><b>SIGN IN</b></button>
+                            <input type="image" src="img/kakao_login_button.png">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="signupModal" class="modal fade" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div id="signupModalContainer" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modalImageContainer">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                    <div class="modalFormContainer">
+                        <h2>Sign Up</h2>
+                        <form action="#" id="signupForm" class="modal-form">
+                            <div>
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Password" required>
+                                <p>이미 계정이 있으신가요? <a href="#" id="signupToLogin" >로그인
+                                </a></p>
+                            </div>
+                            
+
+                        </form>
+
+                        <div class="buttonGroup">
+                            <button onclick=""><span class="material-icons">
+                                    login
+                                </span><b>SIGN UP</b></button>
+                            <input type="image" src="img/kakao_login_button.png">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
 </body>
 <<<<<<< HEAD
 =======
 
 
-<!-- 
+<!--  at <head></head>
+   
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    
+ -->
+
+<!-- before </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script>
         $(function(){
           $("#nav-placeholder").load("../base.html #navbar");
