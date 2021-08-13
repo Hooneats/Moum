@@ -1,13 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>myPage</title>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProductList</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <!--css-->
+  <link rel="stylesheet" href="./myPage-a.css">
+  <link rel="stylesheet" href="./myPage.css">
+
+  <!--font-->
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+          rel="stylesheet"
+  />
+  <style>
+    * {
+      font-family: "Noto Sans KR", sans-serif;
+    }
+  </style>
 </head>
 <body>
+<div id="nav-placeholder" >
+</div>
+
+
+<div class="container">
+  container
+
+  <div class="my-page">
+
+    <div class="my-page-list">
+      <div class="my-page-list-title">
+        MY Page
+        <div class="profile-photo">
+          <div class="photo"></div>
+        </div>
+
+        <div class="profile-info">
+          profile-info
+
+          <div class="profile-info-nicname">
+            profile-info-nicname
+          </div>
+          <div class="profile-info-email">
+            profile-info-email
+          </div>
+        </div>
+
+      </div>
+      <div class="my-page-modify-list">
+        my-page-modify-list
+
+        <div class="my-info-modify">
+          my-info-modify
+        </div>
+        <div class="my-setting-modify">
+          my-setting-modify
+        </div>
+      </div>
+      <div class="drop-membership">
+        drop-membership
+      </div>
+    </div>
+
+    <div class="show-content">
+      show-content
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+<script>
+  $(function () {
+    $("#nav-placeholder").load("../base.html #navbar", () => {
+      document.getElementById("nav-logout").toggleAttribute("hidden");
+      document.getElementById("nav-login").toggleAttribute("hidden");
+      document.getElementById("nav-signup").toggleAttribute("hidden");
+      document.getElementById("nav-mypage").toggleAttribute("hidden");
+      document.getElementById("nav-statistic").toggleAttribute("hidden");
+      document.getElementById("nav-wishlist").toggleAttribute("hidden");
+    });
+    $("#footer-placeholder").load("../base.html #footer");
+  });
+  function elementInViewport2(el) {
+    var top = el.offsetTop;
+    var left = el.offsetLeft;
+    var width = el.offsetWidth;
+    var height = el.offsetHeight;
+
+    while (el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+      left += el.offsetLeft;
+    }
+
+    return (
+            top < window.pageYOffset + window.innerHeight &&
+            left < window.pageXOffset + window.innerWidth &&
+            top + height > window.pageYOffset &&
+            left + width > window.pageXOffset
+    );
+  }
+  window.addEventListener("onScroll", () => {
+    console.log();
+  });
+
+</script>
+
+
+
 
 </body>
 </html>

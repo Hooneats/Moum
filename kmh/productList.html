@@ -11,11 +11,6 @@
     <link rel="stylesheet" href="./productList-a.css">
     <link rel="stylesheet" href="./productList.css">
 
-    <!--vutify-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-
     <!--axios-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!--vue-->
@@ -31,6 +26,17 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!--js-->
     <script src="./productList.js"></script>
+
+    <!--font-->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <style>
+        * {
+            font-family: "Noto Sans KR", sans-serif;
+        }
+    </style>
 
 
 </head>
@@ -55,25 +61,25 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('패션의류/잡화',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/1.jpg" class="swiper-slide-img"><div class="swiper-slide-text">패션의류/잡화</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('뷰티',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/2.jpg" class="swiper-slide-img"><div class="swiper-slide-text">뷰티</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('출산/유아동',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/3.jpg" class="swiper-slide-img"><div class="swiper-slide-text">출산/유아동</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('식품',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/4.jpg" class="swiper-slide-img"><div class="swiper-slide-text">식품</div></img></button></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('패션의류/잡화',$event)" style="cursor: pointer"><img src="./img/1.jpg" class="swiper-slide-img"><div class="swiper-slide-text">패션의류/잡화</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('뷰티',$event)" style="cursor: pointer"><img src="./img/2.jpg" class="swiper-slide-img"><div class="swiper-slide-text">뷰티</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('출산/유아동',$event)" style="cursor: pointer"><img src="./img/3.jpg" class="swiper-slide-img"><div class="swiper-slide-text">출산/유아동</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('식품',$event)" style="cursor: pointer"><img src="./img/4.jpg" class="swiper-slide-img"><div class="swiper-slide-text">식품</div></img></div></div>
 
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('주방용품',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/5.jpg" class="swiper-slide-img"><div class="swiper-slide-text">주방용품</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('홈인테리어',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/6.jpg" class="swiper-slide-img"><div class="swiper-slide-text">홈인테리어</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('가전디지털',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/7.jpg" class="swiper-slide-img"><div class="swiper-slide-text">가전디지털</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('스포츠/레저',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/8.jpg" class="swiper-slide-img"><div class="swiper-slide-text">스포츠/레저</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('자동차용품',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/9.jpg" class="swiper-slide-img"><div class="swiper-slide-text">자동차용품</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('도서/음반/DVD',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/10.jpg" class="swiper-slide-img"><div class="swiper-slide-text">도서/음반/DVD</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('완구/취미',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/11.jpg" class="swiper-slide-img"><div class="swiper-slide-text">완구/취미</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('문구/오피스',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/12.jpg" class="swiper-slide-img"><div class="swiper-slide-text">문구/오피스</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('반려동물용품',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/13.jpg" class="swiper-slide-img"><div class="swiper-slide-text">반려동물용품</div></img></button></div>
-                <div class="swiper-slide"><button class="slideDiv" @click.stop="categoryFetch('헬스/건강식품',$event)" style="text-decoration: none; cursor: pointer"><img src="./img/14.jpg" class="swiper-slide-img"><div class="swiper-slide-text">헬스/건강식품</div></img></button></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('주방용품',$event)" style="cursor: pointer"><img src="./img/5.jpg" class="swiper-slide-img"><div class="swiper-slide-text">주방용품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('홈인테리어',$event)" style="cursor: pointer"><img src="./img/6.jpg" class="swiper-slide-img"><div class="swiper-slide-text">홈인테리어</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('가전디지털',$event)" style="cursor: pointer"><img src="./img/7.jpg" class="swiper-slide-img"><div class="swiper-slide-text">가전디지털</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('스포츠/레저',$event)" style="cursor: pointer"><img src="./img/8.jpg" class="swiper-slide-img"><div class="swiper-slide-text">스포츠/레저</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('자동차용품',$event)" style="cursor: pointer"><img src="./img/9.jpg" class="swiper-slide-img"><div class="swiper-slide-text">자동차용품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('도서/음반/DVD',$event)" style="cursor: pointer"><img src="./img/10.jpg" class="swiper-slide-img"><div class="swiper-slide-text">도서/음반/DVD</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('완구/취미',$event)" style="cursor: pointer"><img src="./img/11.jpg" class="swiper-slide-img"><div class="swiper-slide-text">완구/취미</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('문구/오피스',$event)" style="cursor: pointer"><img src="./img/12.jpg" class="swiper-slide-img"><div class="swiper-slide-text">문구/오피스</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('반려동물용품',$event)" style="cursor: pointer"><img src="./img/13.jpg" class="swiper-slide-img"><div class="swiper-slide-text">반려동물용품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('헬스/건강식품',$event)" style="cursor: pointer"><img src="./img/14.jpg" class="swiper-slide-img"><div class="swiper-slide-text">헬스/건강식품</div></img></div></div>
 
             </div>
-<!--            &lt;!&ndash; If we need pagination &ndash;&gt;-->
-<!--            <div class="swiper-pagination"></div>-->
+            <!--            &lt;!&ndash; If we need pagination &ndash;&gt;-->
+            <!--            <div class="swiper-pagination"></div>-->
 
             <!-- If we need navigation buttons -->
             <div class="swiper-button-prev"></div>
@@ -166,11 +172,11 @@
                 try {
                     let items = await axios.get(`http://localhost:8080/test/product-list-category?categoryName=${this.categoryName}&page=${this.page}`);
                     if (items.data.theEnd != true) {
-                        if (items.data.jsoupTestVoList.length === 0) {
-                            console.log("Fetch does not complete,Therefore one more time trying");
-                            this.fetch();
-                            return;
-                        }
+                        // if (items.data.jsoupTestVoList.length === 0) {
+                        //     console.log("Fetch does not complete,Therefore one more time trying");
+                        //     this.fetch();
+                        //     return;
+                        // }
                         // this.items = items.data.jsoupTestVoList
                         this.items.push(...items.data.jsoupTestVoList);
                         console.log("Fetch complete");
@@ -183,14 +189,17 @@
             },
             handleScrolledToBottom(){
                 // if (isvisible){return}
+                if (this.isTheEnd === false) {
+                    this.page++
+                    this.fetch()
+                }
 
-                this.page++
-                this.fetch()
             },
             resetData(event){
-                this.categoryName = '',
-                    this.searchVal = event.target.value.trim()
-                this.items = [];
+                this.isTheEnd = false
+                this.categoryName = ''
+                this.searchVal = event.target.value.trim()
+                this.items = []
                 this.page = 1
                 if (!this.searchVal) {
                     this.fetch()
@@ -202,11 +211,11 @@
                 try{
                     let items = await axios.get(`http://localhost:8080/test/product-list-search?query=${this.searchVal}&page=${this.page}`)
                     if (items.data.theEnd != true) {
-                        if (items.data.jsoupTestVoList.length === 0) {
-                            console.log("SearchMethod does not complete,Therefore one more time trying");
-                            this.searchMethod()
-                            return;
-                        }
+                        // if (items.data.jsoupTestVoList.length === 0) {
+                        //     console.log("SearchMethod does not complete,Therefore one more time trying");
+                        //     this.searchMethod()
+                        //     return;
+                        // }
                         this.items.push(...items.data.jsoupTestVoList);
                         console.log("SearchMethod complete");
                     } else {
@@ -217,20 +226,20 @@
                 }
             },
             searchHandleScrolledToBottom(){
-
-                this.page++
-                this.searchMethod()
+                if (this.isTheEnd === false) {
+                    this.page++;
+                    this.searchMethod()
+                }
             },
             categoryFetch(categoryName, event) {
+                this.isTheEnd = false;
                 this.searchVal = '',
-                    this.items = [],
-                    this.page = 1,
-                    this.categoryName = categoryName
-                while (this.items.length) {
-                    console.log("명훈님바보")
-                    this.items = []
-                }
+                this.items = [],
+                this.page = 1,
+                this.categoryName = categoryName
+
                 this.fetch()
+
             }
         },
         mounted() {
