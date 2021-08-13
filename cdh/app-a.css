@@ -1,12 +1,5 @@
-html,
-body {
-  overflow: hidden;
-  height: 100vh;
-  width: 100%;
-}
-body {
-  background: none;
-}
+
+@import url("root.css");
 /* navbar  */
 
 #navbar {
@@ -16,7 +9,7 @@ body {
   top: 0;
   z-index: 3;
   transition: all 1s ease;
-  background-color: black;
+  background-color: var(--main);
   
   display: flex;
   flex-direction: row;
@@ -24,7 +17,15 @@ body {
 #navbar > .container-fluid {
   justify-content: space-between;
   font-weight: 700;
-  background: transparent;
+
+  
+}
+#navbar .navbar-brand{
+  font-weight: 800;
+  font-size: 3vw;
+  margin-left: 5%;
+  color: var(--secondary);
+  margin-top: -0.1em;
 }
 #navItem {
   display: flex;
@@ -44,31 +45,29 @@ body {
 }
 #navItem > li > a {
   text-decoration: none;
-  color: white;
+  color: var(--secondary);
 }
 #navItem > li > a:hover {
   text-decoration: underline;
 }
 /* main  */
 #main {
-  overflow: scroll;
+
   width: 100%;
   height: calc(100vh - 70px);
-  background-color: white;
+  background-color: var(--primary);
   top: 70px;
   position: relative;
   scroll-behavior: smooth;
 
-  scrollbar-width: none;
+
 }
 #main > * {
   width: 100%;
   height: calc(100vh - 70px);
   scroll-snap-align: start;
 }
-#main > ::-webkit-scrollbar {
-  display: none;
-}
+
 /* section  */
 
 
@@ -91,18 +90,20 @@ body {
 .first-section>.section-content>.button-container button{
   margin-top: 10vh;
   margin-left: 10vw;
-  width: 140px;
-  height: 38px;
-  background-color: black;
-  color: white;
+  width: 150px;
+  height: 40px;
+  background-color: var(--main);
+  color: var(--primary);
   border: none;
-  border-radius: 16.5px;
+
   font-size: 15px;
+  font-weight: 700;
 }
+
 .first-section >  .text-content {
   text-align: center;
   height: 50%;
-color: black;
+color: var(--main);
   font-weight: 700;
   font-size: 7em;
 }
@@ -110,13 +111,159 @@ color: black;
   margin-top: 10vh;
 }
 
-.second-section,
-img {
+.second-section
+{
+  background-color: var(--secondary);
+  height: 100%;
   width: 100%;
-  height: calc(100vh - 70px);
+  display: flex;
+
+
+
 }
+.second-section .options-section{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--secondarySub) ;
+  border-radius: 15px;
+  padding:0 2%;
+  height: 80%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.second-section .options-section div{
+  margin-top: 10%;
+  border-radius: 15px;
+  align-items: center;
+  text-align: center;
+  font-size: 2vh;
+}
+.second-section .options-section a
+{
+  
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--main);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.second-section .options-section a:hover
+{
+  color: var(--secondary);
+
+}
+
+
+/* chart */
+.second-section .chart-section{
+  
+  width: 85%;
+  margin-left: 5%;
+
+
+}
+/* chart - title */
+.second-section>.chart-section>.title-section{
+
+  margin-top: 5vh;
+  
+  font-size: 100px;
+  font-weight: 600;
+  height: 100px;
+  
+}
+.second-section>.chart-section>.title-section>div{
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+
+}
+.second-section>.chart-section>.title-section>.title-secton-half2{
+  height: 60px;
+  
+}
+
+.title-section .title1{
+  position: absolute;
+  margin-top: -30px;
+  
+  transition: all 0.6s;
+
+}
+.title-section .title2{
+  position: absolute;
+  margin-top: -80px;
+  
+  transition: all 0.6s;
+}
+.title-section .title1.hide{
+
+  margin-top: 50%;
+
+}
+.title-section .title2.hide{
+
+  margin-top: -50%;
+}
+/* chart - main section */
+
+.chart-section .chart-main-section{
+  height: 63%;
+  background-color:var(--secondarySub)  ;
+  border-radius: 15px;
+  margin-top: 5vh;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* chart - diagram - section */
+.chart-main-section .diagram-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 50%;
+  margin: 2em ;
+  margin-right: 0;
+}
+
+/* chart - statistic - section */
+.chart-main-section .statistic-section{
+
+  width: 50%;
+  margin : 2em 2em;
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.chart-main-section .statistic-section .stat-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.chart-main-section .statistic-section .stat-container div{
+  position: relative;
+  top: auto;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.chart-main-section .statistic-section span{
+  font-size: 3vw;
+  font-weight: 800;
+  margin-left: 5%;
+}
+
+/* main - third - section */
 .third-section {
-  background-image: url("img/3-sample.jpeg");
+  background-color: var(--third);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -173,7 +320,7 @@ img {
   text-align: center;
   justify-content: center;
   position: inherit;
-  background-color: #252525;
+  background-color: var(--primary);
 }
 #footer > .footer-content {
   display: flex;
@@ -184,9 +331,13 @@ img {
 .footer-logo {
   display: flex;
   flex-direction: row;
-  color: white;
+  color: var(--main);
   width: 50%;
   margin-left: 5em;
+
+}
+.footer-logo h2{
+  font-weight: 800;
 }
 .footer-logo > p {
   margin-top: 15px;
@@ -206,7 +357,7 @@ img {
   background: transparent;
   border: none;
   display: inline;
-  color: #524d4d;
+  color: var(--main);
 }
 
 /* modal  */
@@ -306,7 +457,7 @@ img {
 
   width: 183px;
   height: 45px;
-  background-color: black;
+  background-color: var(--main);
   color: white;
   border-radius: 5px;
   border: none;
@@ -338,3 +489,4 @@ img {
   width: 80%;
   font-size: 17px;
 }
+
