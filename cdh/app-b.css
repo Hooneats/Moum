@@ -1,72 +1,6 @@
-html,
-body {
-  overflow: hidden;
-  height: 100vh;
-}
-body {
-  background: none;
-}
-/* navbar  */
+@import url("root.css");
 
-#navbar {
-  width: 100%;
-  height: 70px;
-  position: fixed;
-  top: 0;
-  z-index: 3;
-  transition: all 1s ease;
 
-  display: flex;
-  flex-direction: row;
-}
-#navbar > .container-fluid {
-  justify-content: space-between;
-  font-weight: 700;
-  background: transparent;
-}
-#navItem {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  vertical-align: middle;
-}
-#navItem > ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#navItem > li {
-  list-style-type: none;
-  margin-top: 1em;
-  margin-right: 1em;
-}
-#navItem > li > a {
-  text-decoration: none;
-  color: black;
-}
-#navItem > li > a:hover {
-  text-decoration: underline;
-}
-/* main  */
-#main {
-  overflow: scroll;
-  width: 100%;
-  height: calc(100vh - 70px);
-  background-color: green;
-  top: 70px;
-  position: relative;
-  scroll-behavior: smooth;
-
-  scrollbar-width: none;
-}
-#main > * {
-  width: 100vw;
-  height: calc(100vh - 70px);
-  scroll-snap-align: start;
-}
-#main > ::-webkit-scrollbar {
-  display: none;
-}
 /* section  */
 .first-section {
   text-align: center;
@@ -81,37 +15,29 @@ body {
 
 .section-content > .text-content {
   margin-top: 40vh;
-  color: white;
+  
+}
+.section-content > .text-content *{
+  color: var(--main);
   font-weight: 700;
 }
 .section-content > .button-content {
   margin-top: 10vh;
 }
-.section-content > .button-content > button {
-  background-color: lightblue;
-  color: white;
-  border-radius: 10px;
-  width: 185px;
-  height: 54px;
-  border: none;
-  font-weight: bold;
-  font-size: 20px;
-}
-.second-section,
-img {
+
+.second-section
+{
+  background-color: var(--secondary);
   width: 100%;
-  height: calc(100vh - 70px);
+  height: 100vh;
 }
 .third-section {
-  background-image: url("img/3-sample.jpeg");
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
+  background-color: var(--third);
 }
 
 .third-section > .third-section-main {
   width: 100%;
-  height: calc(100vh - 160px);
+
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -127,11 +53,11 @@ img {
 }
 .third-section-main > .right {
   width: 50%;
-  height: calc(100vh - 90px);
+
 }
 .third-section-main > .right > .right-introduction {
   margin-top: 10em;
-  color: white;
+  color: var(--main);
 }
 .right-introduction > h1 {
   font-weight: 700;
@@ -146,60 +72,13 @@ img {
   height: 50px;
   margin-left: 10%;
 }
-/* footer  */
-#footer-placeholder {
-  margin-top: 10vh;
-}
-#footer-placeholder > #footer {
-  display: flex;
-  position: fixed;
-  width: 100%;
-  justify-content: space-between;
-  height: 15vh;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  position: inherit;
-  background-color: #252525;
-}
-#footer > .footer-content {
-  display: flex;
-  text-align: right;
-  justify-content: space-evenly;
-  width: 50%;
-}
-.footer-logo {
-  display: flex;
-  flex-direction: row;
-  color: white;
-  width: 50%;
-  margin-left: 5em;
-}
-.footer-logo > p {
-  margin-top: 15px;
-  margin-left: 1em;
-  font-size: 15px;
-  color: #5a5a5a;
-}
-#footer > .footer-content > .social-icon {
-  margin-top: 1em;
-  display: inline;
-  width: 50%;
-  margin-bottom: 1em;
-}
-#footer > .footer-content > .social-icon > * {
-  margin-left: 1em;
-  width: 1em;
-  background: transparent;
-  border: none;
-  display: inline;
-  color: #524d4d;
-}
+
 
 /* modal  */
 #loginModalContainer {
   max-width: none;
   width: 60%;
+
 }
 #signupModalContainer {
   max-width: none;
@@ -211,6 +90,7 @@ img {
   display: flex;
   flex-direction: row;
   border-radius: 10px;
+
 }
 .modal-content * {
   font-weight: 600;
