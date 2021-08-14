@@ -1,75 +1,10 @@
-html,
-body {
-  overflow: hidden;
-  height: 100vh;
-  width: 100%;
-}
-body {
-  background: none;
-}
+
+@import url("root.css");
 /* navbar  */
 
-#navbar {
-  width: 100%;
-  height: 70px;
-  position: fixed;
-  top: 0;
-  z-index: 3;
-  transition: all 1s ease;
-  background-color: black;
-  
-  display: flex;
-  flex-direction: row;
-}
-#navbar > .container-fluid {
-  justify-content: space-between;
-  font-weight: 700;
-  background: transparent;
-}
-#navItem {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  vertical-align: middle;
-}
-#navItem > ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#navItem > li {
-  list-style-type: none;
-  margin-top: 1em;
-  margin-right: 1em;
-}
-#navItem > li > a {
-  text-decoration: none;
-  color: white;
-}
-#navItem > li > a:hover {
-  text-decoration: underline;
-}
-/* main  */
-#main {
-  overflow: scroll;
-  width: 100%;
-  height: calc(100vh - 70px);
-  background-color: white;
-  top: 70px;
-  position: relative;
-  scroll-behavior: smooth;
 
-  scrollbar-width: none;
-}
-#main > * {
-  width: 100%;
-  height: calc(100vh - 70px);
-  scroll-snap-align: start;
-}
-#main > ::-webkit-scrollbar {
-  display: none;
-}
-/* section  */
+
+/* frist-section  */
 
 
 .first-section > .section-content {
@@ -91,250 +26,219 @@ body {
 .first-section>.section-content>.button-container button{
   margin-top: 10vh;
   margin-left: 10vw;
-  width: 140px;
-  height: 38px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 16.5px;
-  font-size: 15px;
+  
 }
+
 .first-section >  .text-content {
   text-align: center;
   height: 50%;
-color: black;
+color: var(--main);
   font-weight: 700;
   font-size: 7em;
 }
+#calendar{
+  background-color: var(--main);
+  font-weight: 700;
+  z-index: 2;
+  color: var(--secondary);
+
+
+}
+#calendar div.fc-toolbar-chunk button{
+  background-color: var(--secondary);
+  color: var(--main);
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 1;
+  border-left: 1px solid var(--main);
+
+}
+#calendar div.fc-toolbar-chunk button:focus{
+
+  box-shadow: none;
+  outline: none;
+}
+#calendar div.fc-toolbar-chunk button span{
+  font-weight: 900;
+}
+#calendar th{
+  border: 0.5px solid var(--secondary);
+}
+#calendar td.fc-daygrid-day{
+  border: 0.5px solid var(--main);
+
+}
+
+#calendar .fc-scrollgrid-sync-inner a{
+  text-decoration: none;
+  color: var(--secondary);
+}
+#calendar a.fc-daygrid-day-number{
+  
+  color: var(--main);
+  font-weight: 700;
+}
+#calendar .fc-header-toolbar {
+  background-color: var(--main);
+}
+#calendar .fc-daygrid-day-frame{
+  background-color: var(--secondary);
+
+}
+#calendar .fc-event-main{
+  
+  border: 0;
+  color: black;
+
+}
+
+/* second-section  */
+ 
 .section-content > .button-content {
   margin-top: 10vh;
 }
 
-.second-section,
-img {
+.second-section
+{
+  background-color: var(--secondary);
+  height: 100%;
   width: 100%;
-  height: calc(100vh - 70px);
+  display: flex;
+
+
+
 }
-.third-section {
-  background-image: url("img/3-sample.jpeg");
-  background-size: cover;
+.second-section .options-section{
+
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--secondarySub) ;
+  border-radius: 15px;
+  padding:0 2%;
+  height: 80%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.second-section .options-section div{
+  margin-top: 10%;
+  border-radius: 15px;
+  align-items: center;
+  text-align: center;
+  font-size: 2vh;
+}
+.second-section .options-section a
+{
+  
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--main);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.second-section .options-section a:hover
+{
+  color: var(--secondary);
+
+}
+
+
+/* chart */
+.second-section .chart-section{
+  
+  width: 85%;
+  margin-left: 5%;
+
+
+}
+
+
+/* chart - main section */
+
+.chart-section .chart-main-section{
+  height: 63%;
+  background-color:var(--secondarySub)  ;
+  border-radius: 15px;
+  margin-top: 5vh;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* chart - diagram - section */
+.chart-main-section .diagram-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 50%;
+  margin: 2em ;
+  margin-right: 0;
+}
+
+/* chart - statistic - section */
+.chart-main-section .statistic-section{
+
+  width: 50%;
+  margin : 2em 2em;
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.chart-main-section .statistic-section .stat-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.chart-main-section .statistic-section .stat-container div{
+  position: relative;
+  top: auto;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.chart-main-section .statistic-section span{
+  font-size: 3vw;
+  font-weight: 800;
+  margin-left: 5%;
+}
+
+/* third-section */
+.third-section {
+  background-color: var(--third);
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .third-section > .third-section-main {
   width: 100%;
-  height: calc(100vh - 160px);
+
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 .third-section-main > .left {
-  width: 50%;
+  width: 35%;
+
   text-align: center;
+
 }
-.third-section-main > .left > .left-imagesection > img {
-  margin-top: 5em;
-  width: 250px;
-  height: 450px;
-}
+
 .third-section-main > .right {
-  width: 50%;
-  height: calc(100vh - 90px);
+  width: 65%;
+  
+
 }
-.third-section-main > .right > .right-introduction {
-  margin-top: 10em;
-  color: white;
-}
-.right-introduction > h1 {
-  font-weight: 700;
-  font-size: 3em;
-}
-.right-introduction > p {
-  font-weight: 700;
-  font-size: 1em;
-}
-.third-section-main > .right > .right-imagesection > input {
-  width: 154px;
-  height: 50px;
-  margin-left: 10%;
-}
-/* footer  */
-#footer-placeholder {
-  margin-top: 10vh;
-}
-#footer-placeholder > #footer {
-  display: flex;
-  position: fixed;
+.third-section-main > .right > .title-section{
+  margin-left: 20vw;
   width: 100%;
-  justify-content: space-between;
-  height: 15vh;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  position: inherit;
-  background-color: #252525;
-}
-#footer > .footer-content {
-  display: flex;
-  text-align: right;
-  justify-content: space-evenly;
-  width: 50%;
-}
-.footer-logo {
-  display: flex;
-  flex-direction: row;
-  color: white;
-  width: 50%;
-  margin-left: 5em;
-}
-.footer-logo > p {
-  margin-top: 15px;
-  margin-left: 1em;
-  font-size: 15px;
-  color: #5a5a5a;
-}
-#footer > .footer-content > .social-icon {
-  margin-top: 1em;
-  display: inline;
-  width: 50%;
-  margin-bottom: 1em;
-}
-#footer > .footer-content > .social-icon > * {
-  margin-left: 1em;
-  width: 1em;
-  background: transparent;
-  border: none;
-  display: inline;
-  color: #524d4d;
 }
 
-/* modal  */
-#loginModalContainer {
-  max-width: none;
-  width: 60%;
-}
-#signupModalContainer {
-  max-width: none;
-  width: 60%;
-}
-.modal-content {
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  flex-direction: row;
-  border-radius: 10px;
-}
-.modal-content * {
-  font-weight: 600;
-}
-.modal-content > .modalImageContainer {
-  width: 40%;
-}
-.modalFormContainer {
-  margin: 2em;
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  height: 80%;
-  justify-content: space-between;
-}
-.modalImageContainer > img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px 0 0 8px;
-}
-.modalFormContainer h2 {
-  margin-bottom: 2em;
-}
-.modal-form {
-  margin-left: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 60%;
-}
 
-.modal-form > div > p {
-  margin-left: 0.5em;
 
-  font-size: 13px;
-  font-weight: 400;
-}
-.modal-form > div > p > a {
-  font-size: 13px;
-  font-weight: 400;
-  text-decoration: none;
-}
-.modal-form input {
-  width: 95%;
-  border: none;
-  margin-bottom: 2em;
-  background: transparent;
-  border-bottom: 1px solid#dedede;
-  outline: none;
-}
-@media screen and (min-width: 769px) {
-  .buttonGroup {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2em;
-  }
-
-  .buttonGroup > button {
-    margin-right: 2em;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .buttonGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2em;
-  }
-  .buttonGroup > button {
-    margin-bottom: 2em;
-    margin-right: none;
-  }
-}
-.buttonGroup > button {
-  text-align: center;
-  flex: 0 45px 183px;
-
-  width: 183px;
-  height: 45px;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-}
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 18px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-}
-.buttonGroup > button > span {
-  width: 20%;
-  padding: auto;
-  margin: auto;
-}
-.buttonGroup > button > b {
-  margin-top: 0.5em;
-  margin-right: 1em;
-  width: 80%;
-  font-size: 17px;
-}

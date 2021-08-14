@@ -25,68 +25,190 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css">
     <link rel="stylesheet" href="app-a.css" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
     <style>
       * {
         font-family: "Noto Sans KR", sans-serif;
       }
     </style>
-    
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        
+      });
+
+</script>
   </head>
   <body>
     <div id="nav-placeholder"></div>
     <div id="main">
-      <div class="first-section">
-
+      <div name="section" class="first-section">
         <div class="section-content">
           <div class="button-container">
-          <button>CURRDATE!</button>
-        </div>
-        </div>
-          <div class="text-content"><span>₩</span>
-            <span class="counter" >
-            
-            </span>
+            <button id="calendar-toggle">CURRDATE!</button>
           </div>
-        
+          <div id="calendar"></div>
+        </div>
+        <div class="text-content">
+          <span>₩</span>
+          <span id="current-saving" class="counter"> </span>
+        </div>
       </div>
 
-      <div class="second-section">
-        <img src="img/git-test.gif" alt="" />
-      </div>
+      <div name="section" id="second-section" class="second-section">
+        <div class="options-section">
+          <div class="option1">
+            <a href="#none" class="anchor-option"
+              ><i class="fas fa-balance-scale-left fa-2x"></i>Saving Items
+            </a>
+          </div>
+          <div class="option2">
+            <a href="#" class="anchor-option"
+              ><i class="fas fa-balance-scale-left fa-2x"></i>Monthly Stat
+            </a>
+          </div>
+          <div class="option3">
+            <a href="#none" class="anchor-option"
+              ><i class="fas fa-balance-scale-left fa-2x"></i>Yearly Stat
+            </a>
+          </div>
+          <div class="option4">
+            <a href="#none" class="anchor-option"
+              ><i class="fas fa-balance-scale-left fa-2x"></i>Save vs Cost
+            </a>
+          </div>
+          <div class="option5">
+            <a href="#none" class="anchor-option"
+              ><i class="fas fa-balance-scale-left fa-2x"></i>Screen Time
+            </a>
+          </div>
+        </div>
+        <div class="chart-section">
+          <div class="title-section">
+            <div class="title-secton-half1">
+              <span class="title1"></span>
+            </div>
+            <div class="title-secton-half2">
+              <span class="title2"></span>
+            </div>
+          </div>
+          <div class="chart-main-section">
+            <div class="diagram-section">
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+            <div class="statistic-section">
+              <div class="stat-container">
+                <div>
+                  <span class="stat-label">sdf:</span>
+                  <span class="counter">12222444444</span>
+                </div>
+                <div>
+                  <span class="stat-label"></span
+                  ><span class="counter">12222</span>
+                </div>
+                <div>
+                  <span class="stat-label"></span
+                  ><span class="counter">12222</span>
+                </div>
+                <div>
+                  <span class="stat-label"></span
+                  ><span class="counter">12222</span>
+                </div>
+                <div>
+                  <span class="stat-label"></span
+                  ><span class="counter">12222</span>
+                </div>
+                <div>
+                  <span class="stat-label"></span
+                  ><span class="counter">12222</span>
+                </div>
 
-      <div class="third-section">
+                <div>
+                  <span class="stat-label"></span
+                  ><span class="counter">12222</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
+
+      <div name="section" class="third-section">
         <div class="third-section-main">
           <div class="left">
             <div class="left-imagesection">
-              <img src="img/phonemockup.png" alt="" />
+              <div class="option5">
+                <i class="fas fa-tshirt fa-2x"></i>FASHION
+              </div>
+              <div class="option5">
+                <i class="fas fa-tv fa-2x"></i>ELECTRONICS
+              </div>
+              <div class="option5">
+                <i class="fas fa-couch fa-2x"></i>HOME DECO
+              </div>
+              <div class="option5">
+                <i class="fas fa-dice fa-2x"></i>TOY
+              </div>
+              <div class="option5">
+                <i class="fas fa-magic fa-2x"></i>COSMETICS
+              </div>
+
+              <div class="option5">
+                <i class="fas fa-baby-carriage fa-2x"></i>BABY
+              </div>
+              <div class="option5">
+                <i class="fas fa-hamburger fa-2x"></i>FOOD
+              </div>
+              <div class="option5">
+
+                <i class="fas fa-blender fa-2x"></i>KITCHEN
+              </div>
+
+              <div class="option5">
+                <i class="fas fa-futbol fa-2x"></i>SPORTS
+              </div>
+              <div class="option5">
+                <i class="fas fa-car fa-2x"></i>CAR ACC
+              </div>
+              <div class="option5">
+                <i class="fas fa-book-open fa-2x"></i>BOOK & DVD
+              </div>
+              <div class="option5">
+                <i class="fas fa-paw fa-2x"></i>PET
+              </div>
+
+
+              <div class="option5">
+                <i class="fas fa-pen fa-2x"></i>STATIONERY
+              </div>  
+              <div class="option5">
+                <i class="fas fa-heart fa-2x"></i>HEALTH
+              </div>  
+
+
             </div>
           </div>
+
           <div class="right">
-            <div class="right-introduction">
-              <h1>이것은</h1>
-              <h1>명훈앱 아주</h1>
-              <h1>지금 받으면 아주 조흥ㅁ</h1>
-              <h1>지금 받아보세염</h1>
-              <p>사실 안나왔엉 사실 안나왔엉 사실 안나왔엉사실 안나왔엉</p>
-            </div>
-            <div class="right-imagesection">
-              <input type="image" src="img/playstore.png" />
+            <div class="title-section">
+              <div class="title-secton-half1">
+                <span class="title1">WISHLIST</span>
+              </div>
+              <div class="title-secton-half2">
+                <span class="title2">WISHLIST</span>
+              </div>
             </div>
           </div>
         </div>
-        <div id="footer-placeholder"></div>
       </div>
+      <div id="footer-placeholder"></div>
     </div>
     <div id="modal-placeholder"></div>
 
-    
     <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script
@@ -94,47 +216,52 @@
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script src="counterup.js"></script>
-<script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      $(function () {
-        $("#nav-placeholder").load("../base.html #navbar", () => {
-          document.getElementById("nav-logout").toggleAttribute("hidden");
-          document.getElementById("nav-login").toggleAttribute("hidden");
-          document.getElementById("nav-signup").toggleAttribute("hidden");
-          document.getElementById("nav-mypage").toggleAttribute("hidden");
-          document.getElementById("nav-statistic").toggleAttribute("hidden");
-          document.getElementById("nav-wishlist").toggleAttribute("hidden");
-        });
-        $("#footer-placeholder").load("../base.html #footer");
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
       });
-      function elementInViewport2(el) {
-        var top = el.offsetTop;
-        var left = el.offsetLeft;
-        var width = el.offsetWidth;
-        var height = el.offsetHeight;
-
-        while (el.offsetParent) {
-          el = el.offsetParent;
-          top += el.offsetTop;
-          left += el.offsetLeft;
-        }
-
-        return (
-          top < window.pageYOffset + window.innerHeight &&
-          left < window.pageXOffset + window.innerWidth &&
-          top + height > window.pageYOffset &&
-          left + width > window.pageXOffset
-        );
-      }
-      window.addEventListener("onScroll", () => {
-        console.log();
-      });
-
     </script>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="counterup.js"></script>
     
+    <script src="app.js"></script>
+    <script>
+      
+    </script>
   </body>
 </html>
