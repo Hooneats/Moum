@@ -8,7 +8,7 @@
     <title>ProductList</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!--css-->
-    <link rel="stylesheet" href="./productList-a.css">
+    <link rel="stylesheet" href="./root.css">
     <link rel="stylesheet" href="./productList.css">
 
     <!--axios-->
@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!--lodash-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <!--gsap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js" integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q==" crossorigin="anonymous"></script>
+
     <!--js-->
     <script src="./productList.js"></script>
 
@@ -127,23 +133,30 @@
             </div>
         </div>
 
-
-
     </div>
+
     <div v-if="!searchVal && items.length" v-observe-visibility="handleScrolledToBottom"></div>
     <div v-else-if="searchVal && items.length" v-observe-visibility="searchHandleScrolledToBottom"></div>
+
+    <div id="to-top">
+        <div class="material-icons" >arrow_upward</div>
+    </div>
+
 </div>
 
-
-
-
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script>
-    $(function(){
-        $("#nav-placeholder").load("../base.html #navbar");
+    $(function () {
+        $("#nav-placeholder").load("../base.html #navbar", () => {
+            document.getElementById("nav-logout").toggleAttribute("hidden");
+            document.getElementById("nav-login").toggleAttribute("hidden");
+            document.getElementById("nav-signup").toggleAttribute("hidden");
+            document.getElementById("nav-mypage").toggleAttribute("hidden");
+            document.getElementById("nav-statistic").toggleAttribute("hidden");
+            document.getElementById("nav-wishlist").toggleAttribute("hidden");
+        });
         $("#footer-placeholder").load("../base.html #footer");
     });
 </script>
@@ -234,9 +247,9 @@
             categoryFetch(categoryName, event) {
                 this.isTheEnd = false;
                 this.searchVal = '',
-                this.items = [],
-                this.page = 1,
-                this.categoryName = categoryName
+                    this.items = [],
+                    this.page = 1,
+                    this.categoryName = categoryName
 
                 this.fetch()
 
@@ -275,7 +288,28 @@
 
     });
 
+</script>
 
+<!--gsap scroll-->
+<script>
+    const toTopEl = document.querySelector('#to-top')
+
+    window.addEventListener('scroll', _.throttle(function () {
+        if (window.scrollY > 800) {
+            gsap.to(toTopEl, .2, {
+                x: 0
+            });
+        } else {
+            gsap.to(toTopEl, .2, {
+                x: 100
+            })
+        }
+    },300))
+    toTopEl.addEventListener('click', function () {
+        gsap.to(window, .5, {
+            scrollTo: 0
+        })
+    })
 </script>
 
 
