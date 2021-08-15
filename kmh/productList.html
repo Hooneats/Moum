@@ -30,8 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js" integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q==" crossorigin="anonymous"></script>
 
-    <!--js-->
-    <script src="./productList.js"></script>
+
 
     <!--font-->
     <link
@@ -82,6 +81,8 @@
                 <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('문구/오피스',$event)" style="cursor: pointer"><img src="./img/12.jpg" class="swiper-slide-img"><div class="swiper-slide-text">문구/오피스</div></img></div></div>
                 <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('반려동물용품',$event)" style="cursor: pointer"><img src="./img/13.jpg" class="swiper-slide-img"><div class="swiper-slide-text">반려동물용품</div></img></div></div>
                 <div class="swiper-slide"><div class="slideDiv" @click.stop="categoryFetch('헬스/건강식품',$event)" style="cursor: pointer"><img src="./img/14.jpg" class="swiper-slide-img"><div class="swiper-slide-text">헬스/건강식품</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="apple" style="cursor: pointer"><img src="./img/15.jpg" class="swiper-slide-img"><div class="swiper-slide-text">애플</div></img></div></div>
+                <div class="swiper-slide"><div class="slideDiv" @click.stop="samsung" style="cursor: pointer"><img src="./img/16.jpg" class="swiper-slide-img"><div class="swiper-slide-text">삼성전자</div></img></div></div>
 
             </div>
             <!--            &lt;!&ndash; If we need pagination &ndash;&gt;-->
@@ -162,155 +163,10 @@
 </script>
 
 
-<!--axios-->
-<script>
-    /*Akryum*/
-    Vue.use(VueObserveVisibility)
+<!--js axios Akryum gsap-->
+<script src="./productList.js"></script>
 
-    const vm = new Vue ({
-        el: '.container',
-        data(){
-            return{
-                beforeItem:{},
-                items: [],
-                searchVal: '',
-                page: 1,
-                categoryName: '홈인테리어',
-                isTheEnd: false
-            }
-        },
 
-        methods: {
-            async fetch() {
-                try {
-                    let items = await axios.get(`http://localhost:8080/test/product-list-category?categoryName=${this.categoryName}&page=${this.page}`);
-                    if (items.data.theEnd != true) {
-                        // if (items.data.jsoupTestVoList.length === 0) {
-                        //     console.log("Fetch does not complete,Therefore one more time trying");
-                        //     this.fetch();
-                        //     return;
-                        // }
-                        // this.items = items.data.jsoupTestVoList
-                        this.items.push(...items.data.jsoupTestVoList);
-                        console.log("Fetch complete");
-                    } else {
-                        this.isTheEnd = items.data.theEnd;
-                    }
-                } catch (error){
-                    console.log(error)
-                }
-            },
-            handleScrolledToBottom(){
-                // if (isvisible){return}
-                if (this.isTheEnd === false) {
-                    this.page++
-                    this.fetch()
-                }
-
-            },
-            resetData(event){
-                this.isTheEnd = false
-                this.categoryName = ''
-                this.searchVal = event.target.value.trim()
-                this.items = []
-                this.page = 1
-                if (!this.searchVal) {
-                    this.fetch()
-                    return
-                }
-                this.searchMethod()
-            },
-            async searchMethod() {
-                try{
-                    let items = await axios.get(`http://localhost:8080/test/product-list-search?query=${this.searchVal}&page=${this.page}`)
-                    if (items.data.theEnd != true) {
-                        // if (items.data.jsoupTestVoList.length === 0) {
-                        //     console.log("SearchMethod does not complete,Therefore one more time trying");
-                        //     this.searchMethod()
-                        //     return;
-                        // }
-                        this.items.push(...items.data.jsoupTestVoList);
-                        console.log("SearchMethod complete");
-                    } else {
-                        this.isTheEnd = items.data.theEnd
-                    }
-                }catch (error){
-                    console.log(error)
-                }
-            },
-            searchHandleScrolledToBottom(){
-                if (this.isTheEnd === false) {
-                    this.page++;
-                    this.searchMethod()
-                }
-            },
-            categoryFetch(categoryName, event) {
-                this.isTheEnd = false;
-                this.searchVal = '',
-                    this.items = [],
-                    this.page = 1,
-                    this.categoryName = categoryName
-
-                this.fetch()
-
-            }
-        },
-        mounted() {
-            this.fetch()
-        }
-    })
-
-    const swiper = new Swiper('.swiper-container', {
-        // Optional parameters
-        autoplay:{
-            display: 5000,
-            disableOnInteraction: false
-        },
-        touchStartPreventDefault: false,
-        effect: 'slide',
-        direction: 'horizontal',
-
-        slidesPerView: 5,
-        slideBetween: 10,
-        centerSlides: true,
-
-        // // If we need pagination
-        // pagination: {
-        //     el: '.swiper-pagination',
-        //     clickable: true
-        // },
-
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-    });
-
-</script>
-
-<!--gsap scroll-->
-<script>
-    const toTopEl = document.querySelector('#to-top')
-
-    window.addEventListener('scroll', _.throttle(function () {
-        if (window.scrollY > 800) {
-            gsap.to(toTopEl, .2, {
-                x: 0
-            });
-        } else {
-            gsap.to(toTopEl, .2, {
-                x: 100
-            })
-        }
-    },300))
-    toTopEl.addEventListener('click', function () {
-        gsap.to(window, .5, {
-            scrollTo: 0
-        })
-    })
-</script>
 
 
 </body>

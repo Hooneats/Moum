@@ -10,6 +10,12 @@
   <!--css-->
   <link rel="stylesheet" href="./root.css">
   <link rel="stylesheet" href="./myPage.css">
+  <!--axios-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!--vue-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--jQuery-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!--아이콘-->
   <link
@@ -104,23 +110,51 @@
             <label for="Id" class="form-label nic-label">Nic Nmae</label>
             <input type="text" class="form-control" id="Id" value="앙우와아앙" placeholder="Nic Name" name="nicname" >
 
-            <label for="Pw" class="form-label pw-label">Password</label>
-            <input type="password" class="form-control" id="Pw" placeholder="Pw" name="password" >
+            <!--비밀번호 수정전 비밀번호 맞는지 확인하기 버튼-->
+            <div class="vue-password-paragraph" id="vue-pw">
+              <button v-show="!passwordChangeInputShow" type="button" class="pw-change-button-try" data-bs-toggle="modal" data-bs-target="#password-change-confirm">Password change</button>
+              <!-- Modal axios 비동기 처리-->
+              <div class="modal fade" id="password-change-confirm" tabindex="-1" aria-labelledby="password-change-confirm-label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="password-change-confirm-label">현재 비밀번호 확인</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <label for="current-password-input-labelId" class="form-label">Current Password</label>
+                      <input v-model:value="currentPassword" type="text" class="form-control" id="current-password-input-labelId" placeholder="current-password">
+                      <div v-show="isNotCurrentPassword" id="isNotCurrentPasswordDiv">현재 비밀번호가 맞지 않습니다.</div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <button type="button" class="btn btn-primary" v-on:click="currentPasswordIsRightButton()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="IdPw-submit">
-              Submit
-            </button>
+
+              <!--              비밀번호 맞으면 보여주기 if필요-->
+              <div v-show="passwordChangeInputShow">
+                <label for="Pw" class="form-label pw-label">Password</label>
+                <input type="password" class="form-control" id="Pw" placeholder="Pw" name="password" >
+              </div>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#info-change-modal" class="IdPw-submit">
+                Submit
+              </button>
+            </div>
           </div>
           <!--모달-->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="info-change-modal" tabindex="-1" aria-labelledby="info-change-confirm" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">확인</h5>
+                  <h5 class="modal-title" id="info-change-confirm">확인</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  닉네임, 비밀변호를 정말 변경하시겠습니까?
+                  정보를 변경하시겠습니까?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -145,16 +179,17 @@
 
       <!--탈퇴하기-->
       <form action="#" method="post">
+        <!--아이디 값을 넘긴다-->
         <input type="hidden" name="Id">
         <div class="drop-membership">
-          <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-outline-secondary">탈퇴하기</button>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#drop-member-modal" class="btn btn-outline-secondary">탈퇴하기</button>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="drop-member-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="drop-member-confirm" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">확인</h5>
+                <h5 class="modal-title" id="drop-member-confirm">확인</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -245,8 +280,47 @@
   $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
   });
+  <!--이미지 업로드 여기까지-->
 </script>
-<!--이미지 업로드 여기까지-->
+
+<script>
+  <!--vue password paragraph-->
+  var vuePw = new Vue({
+    el: '#vue-pw',
+    data(){
+      return{
+        // passwordModalShow: true,
+        currentPassword:'',
+        isRightCurrentPassword: false,
+        isNotCurrentPassword: false,
+        passwordChangeInputShow: false
+      }
+    },
+    methods:{
+      currentPasswordIsRightButton(){
+      // async currentPasswordIsRightButton(){
+        /*입력한 패스워드를 포함해서 보내주는 URL 넣어주자*/
+        // let response = await axios.get();
+        // if (response.data.isRightCurrentPassword === true) {
+        //   this.currentPassword = '';
+        //   this.isNotCurrentPassword = false;
+        //   $("#password-change-confirm").modal("hide");
+        //
+        //   this.passwordChangeInputShow = true;
+        // } else {
+        //   this.isNotCurrentPassword = true;
+        // }
+        this.currentPassword = '';
+        this.isNotCurrentPassword = false;
+        $("#password-change-confirm").modal("hide");
+        this.passwordChangeInputShow = true;
+      }
+    }
+
+  })
+  // $("#password-change-confirm").modal("hide")
+
+</script>
 
 
 </html>

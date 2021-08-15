@@ -307,6 +307,13 @@ label.pw-label {
     background-color: #fff;
 
 }
+.pw-change-button-try {
+    color: #fff;
+    background-color: #614168;
+    border-radius: 10%;
+    width: 200px;
+    height: 30px;
+}
 
 .IdPw-submit {
     color: #fff;
@@ -342,6 +349,10 @@ label.pw-label {
 /*탈퇴하기*/
 .drop-membership {
     text-align: end;
+}
+/*모달안에 비밀번호가 맞지않은 경고*/
+#isNotCurrentPasswordDiv {
+ color: red;
 }
 
 

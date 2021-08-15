@@ -12,10 +12,6 @@ body{
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-    display: none;
-  }
-
 
 /* section - title with animation */
 .title-section{
