@@ -1,17 +1,19 @@
 <body>
-    
+
     <nav id="navbar" class="navbar">
         <div class="container-fluid">
 
             <a href="#" class="navbar-brand">MOUM</a>
 
-            
+
             <ul id="navItem">
-                <li><a href="#" id="nav-login" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">LOGIN </a></li>
-                <li><a href="#" id="nav-signup" type="button" data-bs-toggle="modal" data-bs-target="#signupModal">SIGNUP</a>
+                <li><a href="#" id="nav-login" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">LOGIN
+                    </a></li>
+                <li><a href="#" id="nav-signup" type="button" data-bs-toggle="modal"
+                        data-bs-target="#signupModal">SIGNUP</a>
                 </li>
 
-                
+
                 <li><a href="#page3" id="nav-wishlist" hidden="true">WISHLIST</a></li>
                 <li><a href="#" id="nav-statistic" hidden="true">STATISTIC</a></li>
                 <li><a href="#" id="nav-mypage" hidden="true">MYPAGE</a></li>
@@ -23,7 +25,7 @@
         </div>
 
     </nav>
-    
+
 
     <footer id="footer">
         <div class="footer-logo">
@@ -32,9 +34,12 @@
         </div>
         <div class="footer-content">
             <div class="social-icon">
-                <a href="https://github.com/Hooneats/Moum" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
-                <a href="https://trello.com/b/Hl7QZRr8/our-project" target="_blank"><i class="fab fa-trello fa-2x"></i></a>
-                <a href="https://www.youtube.com/channel/UCSMue_bq2dH1UEd9SFsyd6g" target="_blank"> <i class="fab fa-youtube-square fa-2x"></i></a>
+                <a href="https://github.com/Hooneats/Moum" target="_blank"><i
+                        class="fab fa-github-square fa-2x"></i></a>
+                <a href="https://trello.com/b/Hl7QZRr8/our-project" target="_blank"><i
+                        class="fab fa-trello fa-2x"></i></a>
+                <a href="https://www.youtube.com/channel/UCSMue_bq2dH1UEd9SFsyd6g" target="_blank"> <i
+                        class="fab fa-youtube-square fa-2x"></i></a>
             </div>
         </div>
     </footer>
@@ -88,15 +93,17 @@
                             <div>
                                 <input type="email" placeholder="Email" required>
                             </div>
+                            
                             <div>
                                 <input type="password" placeholder="Password" required>
-                                <p>이미 계정이 있으신가요? <a href="#" id="signupToLogin" >로그인
+                                
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Username" required>
+                                <p>이미 계정이 있으신가요? <a href="#" id="signupToLogin">로그인
                                 </a></p>
                             </div>
-                            
-
                         </form>
-
                         <div class="buttonGroup">
                             <button onclick=""><span class="material-icons">
                                     login
@@ -104,10 +111,145 @@
                             <input type="image" src="img/kakao_login_button.png">
                         </div>
                     </div>
-
                 </div>
-
             </div>
+        </div>
+        <div id="deadEventModal" class="modal fade" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div id="deadEventModalContainer" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-card">
+                        <div class="title-section">
+                            <h3>현재날짜</h3>
+                            <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="subtitle-section">
+                            <h4>너의 소비</h4>
+                        </div>
+                        <div class="dead-list-section">
+                            <form action="">
+                                <select type="select" disabled="true" class="item-selection">
+                                    <!--option disabled selected -->
+                                    <option value="sample" selected>sample</option>
+                                </select>
+                                <input type="text" value="5000">
+                                <a href="#none" class="edit-submit">edit</a>
+                                <a href="#none" class="delete">delete</a>
+                            </form>
+                            <h3 class="alter">소비 없엉</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="savingItemModal" class="modal fade" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div id="savingItemModalContainer" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-card">
+                        <div class="title-section">
+                            <h3>SavingItem</h3>
+                            <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="add-saving-item-form" hidden="true">
+                            <!--add saving item synchronus -->
+                            <form class="" action="">
+                                <div>
+                                    <label for="">Select Item</label>
+                                    <select name="addict_item" type="select" class="saving-item-selection">
+                                        <!--option disabled selected -->
+                                        <option value="cigarette" selected>cigarette</option>
+                                        <option value="liquor">liquor</option>
+                                        <option value="coffee">coffee</option>
+                                        <option value="other">other</option>
+                                    </select>
+                                    <input name="addict_item" type="text" required disabled class="saving-item-selection-other" disabled hidden="true"> 
+                                </div>
+                                <div>
+                                    <label for="money">cost</label>
+                                    <input type="number" min="100" max="10000000000" placeholder="money you spend" required>
+                                </div>
+                                <div>
+                                    <label for="date">Select StartDate</label>
+                                    <input type="date" placeholder="money you spend" required>
+                                </div>
+                                <div>
+                                    <input type="submit" class="submit" >
+                                </div>
+                            </form>
+                        </div>
+                        <div class="saving-list-section">
+                            <div hidden="true"><h1>no list</h1></div>
+                            <form action="">
+                                <select type="select" disabled="true" class="item-selection">
+                                    <!--option disabled selected -->
+                                    <option value="sample" selected>sample</option>
+                                </select>
+                                <input type="text" value="5000" disabled>
+                                <input type="date" value="2021-08-23" disabled>
+                                <a href="#none" class="edit-submit">edit</a>
+                                <a href="#none" class="delete">delete</a>
+                            </form>
+                            <div>
+                                <button class="add-item-button">Add</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="categorySelectionModal" class="modal fade" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div id="categorySelectionModalContainer" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-card">
+                        <div class="title-section">
+                            <h3>선호카테고리</h3>
+                            <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                    
+                        <div class="category-list">
+                            <div class="left">
+                                <div class="category-box">
+                                    <div name="fashion" class="option deselect"><span>Fashion<a hidden="true">x</a></span></div>
+                                    <div name="beauty" class="option deselect"><span>Beauty<a hidden="true">x</a></span></div>
+                                    <div name="baby" class="option deselect"><span>Baby<a hidden="true">x</a></span></div>
+                                    <div name="food" class="option deselect"><span>Food<a hidden="true">x</a></span></div>
+                                    <div name="kitchen" class="option deselect"><span>Kitchen<a hidden="true">x</a></span></div>
+                                    <div name="interior" class="option deselect"><span>HomeDeco<a hidden="true">x</a></span></div>
+                                    <div name="electronics" class="option deselect"><span>Electronics<a hidden="true">x</a></span></div>
+                                    <div name="sports-leisure" class="option deselect"><span>Sports<a hidden="true">x</a></span></div>
+                                    <div name="carAccessories" class="option deselect"><span>CarAcc<a hidden="true">x</a></span></div>
+                                    <div name="books-dvd" class="option deselect"><span>Books/DVD<a hidden="true">x</a></span></div>
+                                    <div name="hobby" class="option deselect"><span>Hobby<a hidden="true">x</a></span></div>
+                                    <div name="stationery" class="option deselect"><span>Stationery<a hidden="true">x</a></span></div>
+                                    <div name="pet" class="option deselect"><span>Pet<a hidden="true">x</a></span></div>
+                                    <div name="health" class="option deselect"><span>Health<a hidden="true">x</a></span></div>
+
+                                </div>
+                            </div>
+                            <div class="center">
+                                <div class="verticalline"></div>
+                                <i class="fas fa-arrow-right"></i>
+                                <div class="verticalline"></div>
+                            </div>
+                            <div class="right">
+                                <div class="selected-category-box">
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="submit">
+                            <button class="add-item-button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 
