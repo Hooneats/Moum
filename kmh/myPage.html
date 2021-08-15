@@ -45,13 +45,13 @@
 
   <div class="my-page">
 
-    <div class="show-content">
+    <div class="show-content" id="show-content-id">
 
 
 
       <div class="content-area-member">
         <!--프로필-->
-        <div class="my-page-profile">
+        <div class="my-page-profile" id="my-page-profile-id">
           <div class="my-page-profile-content">
             <div class="my-page-profile-info">
               <div class="profile-title">
@@ -78,7 +78,7 @@
 
         <!--이미지 업로드-->
         <form class="profile-photo-content" action="#" method="post" enctype="multipart/form-data">
-
+          <input type="hidden" name="m_seq">
 
           <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
           <div class="file-upload">
@@ -106,12 +106,15 @@
 
         <!--아이디 비밀번호 수정-->
         <form class="profile-IdPw-content" action="#" method="post">
+          <input type="hidden" name="m_seq">
           <div class="IdPw-upload">
-            <label for="Id" class="form-label nic-label">Nic Nmae</label>
-            <input type="text" class="form-control" id="Id" value="앙우와아앙" placeholder="Nic Name" name="nicname" >
+            <label for="nicName" class="form-label nic-label">NicName</label>
+            <input type="text" class="form-control" id="nicName" value="앙우와아앙" placeholder="Nic Name" name="username" >
 
             <!--비밀번호 수정전 비밀번호 맞는지 확인하기 버튼-->
             <div class="vue-password-paragraph" id="vue-pw">
+              <input type="hidden" v-bind:value="memberSeq = '아르헨티나양'">
+              <div>{{memberSeq}}</div>
               <button v-show="!passwordChangeInputShow" type="button" class="pw-change-button-try" data-bs-toggle="modal" data-bs-target="#password-change-confirm">Password change</button>
               <!-- Modal axios 비동기 처리-->
               <div class="modal fade" id="password-change-confirm" tabindex="-1" aria-labelledby="password-change-confirm-label" aria-hidden="true">
@@ -138,7 +141,7 @@
               <!--              비밀번호 맞으면 보여주기 if필요-->
               <div v-show="passwordChangeInputShow">
                 <label for="Pw" class="form-label pw-label">Password</label>
-                <input type="password" class="form-control" id="Pw" placeholder="Pw" name="password" >
+                <input type="password" class="form-control" id="Pw" placeholder="Pw" name="pwd" >
               </div>
               <button type="button" data-bs-toggle="modal" data-bs-target="#info-change-modal" class="IdPw-submit">
                 Submit
@@ -180,7 +183,7 @@
       <!--탈퇴하기-->
       <form action="#" method="post">
         <!--아이디 값을 넘긴다-->
-        <input type="hidden" name="Id">
+        <input type="hidden" name="m_seq">
         <div class="drop-membership">
           <button type="button" data-bs-toggle="modal" data-bs-target="#drop-member-modal" class="btn btn-outline-secondary">탈퇴하기</button>
         </div>
@@ -283,6 +286,10 @@
   <!--이미지 업로드 여기까지-->
 </script>
 
+
+
+
+<!--현재 비밀변호 변경-->
 <script>
   <!--vue password paragraph-->
   var vuePw = new Vue({
@@ -290,6 +297,7 @@
     data(){
       return{
         // passwordModalShow: true,
+        memberSeq : '',
         currentPassword:'',
         isRightCurrentPassword: false,
         isNotCurrentPassword: false,
