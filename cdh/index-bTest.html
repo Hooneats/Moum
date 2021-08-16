@@ -22,6 +22,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!--jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--kakao-->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 
     <link rel="stylesheet" href="app-b.css" />
@@ -122,7 +124,7 @@
                 <button @click="loginTry" id="loginTry"><span class="material-icons">
                                     login
                                 </span><b>SIGN IN</b></button>
-                <input type="image" src="img/kakao_login_button.png">
+                <div onclick="kakaoLogin()" style="cursor: pointer"><input type="image" src="img/kakao_login_button.png"></div>
               </div>
             </div>
 
@@ -153,6 +155,8 @@
           }
         })
       </script>
+
+
 
 
 
@@ -194,7 +198,7 @@
                 <button @click="goJoin"><span class="material-icons">
                                     login
                                 </span><b>SIGN UP</b></button>
-                <input type="image" src="img/kakao_login_button.png">
+                <div style="cursor: pointer" onclick="kakaoLogin()"><input type="image" src="img/kakao_login_button.png"></div>
               </div>
             </div>
           </div>
@@ -250,7 +254,63 @@
       </script>
 
 
-
+      <script>
+        /*카캌오 계정 로그인*/
+        //     	b26d97f47f6d651bc25789c72d183789
+        var kakaoNicname;
+        var kakaoProfileImage;
+        var kakaoEmail;
+        Kakao.init('b26d97f47f6d651bc25789c72d183789');
+        function kakaoLogin(){
+          Kakao.isInitialized();
+          Kakao.Auth.login({
+            scope: 'account_email, profile_image, profile_nickname',
+            success: function(authObj) {
+                Kakao.API.request({
+                  url: '/v2/user/me',
+                  success: function(res) {
+                    kakaoNicname = res.properties.nickname
+                    kakaoProfileImage = res.properties.profile_image
+                    kakaoEmail = res.kakao_account.email
+                    console.log(res.properties.nickname);
+                    console.log(res.properties.profile_image);
+                    console.log(res.kakao_account.email);
+                    console.log(authObj.access_token)
+                    kakaoTrans()
+                  },
+                  fail: function(error) {
+                    console.log(
+                            'login success, but failed to request user information: ' +
+                            JSON.stringify(error)
+                    )
+                  },
+                })
+            },
+            fail: function(err) {
+              console.log(JSON.stringify(err))
+            },
+          })
+        }
+        function kakaoLogout() {
+          if (!Kakao.Auth.getAccessToken()) {
+            alert('Not logged in.')
+            return
+          }
+          Kakao.Auth.logout(function() {
+            alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+          })
+        }
+        async function kakaoTrans(){
+          let responseA = await axios.post(`http://localhost:8080/moum/test-kakao?kakaoEmail=${kakaoEmail}&kakpNicname=${kakaoNicname}&kakaoImage=${kakaoProfileImage}`)
+          if (responseA.data === true) {
+            /*성공시 돌아갈 url*/
+            location.assign(`http://localhost:8080`);
+          } else {
+            console.log("이메일 정보를 동의해주세요");
+            kakaoLogout()
+          }
+        }
+      </script>
 
 
 
